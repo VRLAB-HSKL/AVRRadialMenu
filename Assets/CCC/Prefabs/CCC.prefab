@@ -179,7 +179,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 7683877667476018224, guid: 90ef3b371bded0049842ac0ba356d4e6, type: 3}
       propertyPath: m_Name
-      value: CC1
+      value: CC3
       objectReference: {fileID: 0}
     m_RemovedComponents: []
     m_RemovedGameObjects: []
@@ -399,7 +399,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 7683877667476018224, guid: 90ef3b371bded0049842ac0ba356d4e6, type: 3}
       propertyPath: m_Name
-      value: CC3
+      value: CC1
       objectReference: {fileID: 0}
     m_RemovedComponents: []
     m_RemovedGameObjects: []

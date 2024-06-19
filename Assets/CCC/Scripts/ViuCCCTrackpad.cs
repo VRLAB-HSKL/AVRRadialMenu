@@ -21,6 +21,8 @@ public class ViuCCCTrackpad : MonoBehaviour
      [Tooltip("Objekt mit CCC-Prefabs")] 
     public GameObject TheCCC;
 
+    private GameObject[] cubes;
+
     private float x_, y_, angle;
 
     private int newIndex;
@@ -74,6 +76,12 @@ public class ViuCCCTrackpad : MonoBehaviour
     /// </summary>
     private void Start()
     {
+        cubes = new GameObject[segments];
+        cubes[0] = GameObject.Find("CC0");
+        cubes[1] = GameObject.Find("CC1");
+        cubes[2] = GameObject.Find("CC2");
+        cubes[3] = GameObject.Find("CC3");
+
         Logger.Debug(">>> ViuCCC.Start");
         FindTheCCC();
         if (!TheCCC)
@@ -182,15 +190,30 @@ public class ViuCCCTrackpad : MonoBehaviour
     private static readonly log4net.ILog Logger 
         = log4net.LogManager.GetLogger(typeof(ViuCCC));
 
-
      void Update()
     {
         ViewFollowController();
         y_ = Input.GetAxis("Vertical");
         x_ = Input.GetAxis("Horizontal");
         PolarCoordinates(segments, x_, y_);
+        for (int i = 0; i < segments; i++)
+        {
+            var cubeRenderer = cubes[i].GetComponent<Renderer>();
+            if (newIndex != i)
+            {
+                //cube.color = normalColor;
+                cubeRenderer.material.SetColor("_Color", Color.white);
+            }
+            else
+            {
+                //cube.color = activationColor;
+                cubeRenderer.material.SetColor("_Color", Color.red);
+            }
+        }
+        
+        GameObject selected = cubes[newIndex];
+        Debug.Log("Ausgewählt: " + selected.name);
     }
-
      private void PolarCoordinates(int nSegments, float x, float y)
      {
          float segmentAngle = 360f / nSegments;
@@ -208,4 +231,12 @@ public class ViuCCCTrackpad : MonoBehaviour
             Camera.main.transform.position + Camera.main.transform.forward * 0.6f,
             Camera.main.transform.rotation);
     }
+
+    
+
+    
+    
+
+    
+    
 }

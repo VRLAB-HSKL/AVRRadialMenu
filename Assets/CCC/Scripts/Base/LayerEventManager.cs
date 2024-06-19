@@ -143,27 +143,19 @@ public class LayerEventManager : MonoBehaviour,
     {
         switch (m_goName)
         {
-           
             case "Schicht1":
-                cubeRenderers[0] = m_getRenderer("CC11"); 
-                cubeRenderers[1] = m_getRenderer("CC21");
-                cubeRenderers[2] = m_getRenderer("CC31");
-                cubeRenderers[3] = m_getRenderer("CC41");
-                cubeRenderers[4] = m_getRenderer("CC51");
-                cubeRenderers[5] = m_getRenderer("CC61");
-                cubeRenderers[6] = m_getRenderer("CC71");
-                cubeRenderers[7] = m_getRenderer("CC81");
-                // Mittlere Schicht hat keinen innneren Cube
-                cubeRenderers[8] = m_getRenderer("CC81");
+                cubeRenderers[0] = m_getRenderer("CC0"); 
+                cubeRenderers[1] = m_getRenderer("CC1");
+                cubeRenderers[2] = m_getRenderer("CC2");
+                cubeRenderers[3] = m_getRenderer("CC3");
                 break;
-          
         }
     }
     
     /// <summary>
     /// Array für die Renderer der Würfel in der aktuellen Schicht
     /// </summary>
-    private Renderer[] cubeRenderers = new Renderer[9];
+    private Renderer[] cubeRenderers = new Renderer[4];
 
     /// <summary>
     /// Renderer im übergebenen GameObject abfragen

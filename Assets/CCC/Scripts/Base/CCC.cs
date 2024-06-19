@@ -13,7 +13,7 @@ public class CCC : MonoBehaviour
     /// <summary>
     /// GameObjects für die drei Schichten
     /// </summary>
-    protected GameObject  m_Layer1;
+    protected GameObject m_Layer1;
 
     /// <summary>
     /// Layer zuordnen
