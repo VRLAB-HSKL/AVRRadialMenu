@@ -43,6 +43,8 @@ public class ViuCCCTrackpad : MonoBehaviour
     ///  </remarks>
      [Tooltip("Welcher Button auf dem Controller wird für das Einblenden eingesetzt?")]
     public ControllerButton ActivationButton = ControllerButton.Trigger;
+    public ControllerButton SelectionButton = ControllerButton.Grip;
+    
     
     /// <summary>
     /// Button für das Press-Event
@@ -201,28 +203,37 @@ public class ViuCCCTrackpad : MonoBehaviour
             var cubeRenderer = cubes[i].GetComponent<Renderer>();
             if (newIndex != i)
             {
-                //cube.color = normalColor;
                 cubeRenderer.material.SetColor("_Color", Color.white);
             }
             else
             {
-                //cube.color = activationColor;
-                cubeRenderer.material.SetColor("_Color", Color.red);
+                if (ViveInput.GetPress(CCCHand, SelectionButton))
+                {
+                    cubeRenderer.material.SetColor("_Color", Color.red);
+                }
+                else
+                {
+                    cubeRenderer.material.SetColor("_Color", Color.gray);
+                }
             }
         }
-        
-        GameObject selected = cubes[newIndex];
-        Debug.Log("Ausgewählt: " + selected.name);
     }
      private void PolarCoordinates(int nSegments, float x, float y)
      {
-         float segmentAngle = 360f / nSegments;
-         angle = Mathf.Atan2(x, y) * Mathf.Rad2Deg + segmentAngle/2;
-         if (angle < 0)
+         if (x == 0 && y == 0)
          {
-             angle += 360;
+             newIndex = -1;
          }
-         newIndex = Mathf.FloorToInt(angle / segmentAngle);
+         else
+         {
+             float segmentAngle = 360f / nSegments;
+             angle = Mathf.Atan2(x, y) * Mathf.Rad2Deg + segmentAngle/2;
+             if (angle < 0)
+             {
+                 angle += 360;
+             }
+             newIndex = Mathf.FloorToInt(angle / segmentAngle);             
+         }
      }
      
     private void ViewFollowController()
@@ -232,11 +243,5 @@ public class ViuCCCTrackpad : MonoBehaviour
             Camera.main.transform.rotation);
     }
 
-    
-
-    
-    
-
-    
     
 }

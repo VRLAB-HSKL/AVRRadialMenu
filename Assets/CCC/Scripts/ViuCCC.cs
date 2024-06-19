@@ -36,6 +36,7 @@ public class ViuCCC : MonoBehaviour
     ///  </remarks>
      [Tooltip("Welcher Button auf dem Controller wird für das Einblenden eingesetzt?")]
     public ControllerButton ActivationButton = ControllerButton.Trigger;
+    public ControllerButton SelectionButton = ControllerButton.Grip;
     
     /// <summary>
     /// Button für das Press-Event
