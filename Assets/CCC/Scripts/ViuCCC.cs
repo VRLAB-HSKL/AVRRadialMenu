@@ -54,7 +54,7 @@ public class ViuCCC : MonoBehaviour
     /// <summary>
     /// GameObject des Controllers, den wir verwenden möchten.
     /// </summary>
-    private GameObject m_Controller;
+    protected GameObject m_Controller;
     
     /// <summary>
     /// GameObjekct des Colliders des Controllers, den wir nicht verwenden.
@@ -63,12 +63,12 @@ public class ViuCCC : MonoBehaviour
     /// Wir benögiten dieses Objekt, da wir den Collider dieses Controllers
     /// deaktivieren.
     /// </remarks>
-    private GameObject m_ControllerCollider;
+    protected GameObject m_ControllerCollider;
     
     /// <summary>
     /// CCC-Objekt finden und alles initialisieren
     /// </summary>
-    private void Start()
+    protected void Start()
     {
         Logger.Debug(">>> ViuCCC.Start");
         FindTheCCC();
@@ -112,7 +112,7 @@ public class ViuCCC : MonoBehaviour
     /// <summary>
     /// Registrieren der Listener für den gewünschten Button
     /// </summary>
-    private void OnEnable()
+    protected void OnEnable()
     {
         ViveInput.AddListenerEx(CCCHand,
             ActivationButton,
@@ -124,7 +124,7 @@ public class ViuCCC : MonoBehaviour
     /// Listener wieder aus der Registrierung
     /// herausnehmen beim Beenden der Anwendung
     /// </summary>
-    private void OnDisable()
+    protected void OnDisable()
     {
         ViveInput.RemoveListenerEx(CCCHand,
             ActivationButton,
@@ -135,7 +135,7 @@ public class ViuCCC : MonoBehaviour
     /// <summary>
     ///Callback für das Aktivieren und Deaktivieren des CCC Prefabs
     /// </summary>
-    private void ToggleCCC()
+    protected void ToggleCCC()
     {
         Logger.Debug(">>> ToggleCCC");
         Show = !Show;
@@ -175,6 +175,6 @@ public class ViuCCC : MonoBehaviour
     /// <summary>
     /// Instanz eines Log4Net Loggers
     /// </summary>
-    private static readonly log4net.ILog Logger 
+    protected static readonly log4net.ILog Logger 
         = log4net.LogManager.GetLogger(typeof(ViuCCC));
 }
