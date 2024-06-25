@@ -15,7 +15,7 @@ GameObject:
   - component: {fileID: 7683877667476018191}
   - component: {fileID: 5350355363721916375}
   m_Layer: 0
-  m_Name: CCCube
+  m_Name: CCCylinder
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -43,7 +43,7 @@ MeshFilter:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 7683877667476018224}
-  m_Mesh: {fileID: 10202, guid: 0000000000000000e000000000000000, type: 0}
+  m_Mesh: {fileID: 10206, guid: 0000000000000000e000000000000000, type: 0}
 --- !u!23 &7683877667476018189
 MeshRenderer:
   m_ObjectHideFlags: 0
