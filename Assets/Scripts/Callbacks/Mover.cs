@@ -6,13 +6,30 @@ using UnityEngine;
 /// </summary>
 public class Mover : MonoBehaviour
 {
-
-    /// <summary>
-    /// Delta für die Veränderung der Koordinaten
-    /// </summary>
-    [Tooltip("Welcher Button auf dem Controller wird für das Einblenden eingesetzt?")] [Range(0.01f, 1.0f)]
     public float Delta = 0.1f;
     
+	public void ExecuteFunction(int cubeID)
+    {
+        switch (cubeID)
+        {
+            case 0:
+                PositiveX();
+                break;
+            case 1:
+                NegativeY();
+                break;
+            case 2:
+                NegativeX();
+                break;
+            case 3:
+                PositiveY();
+                break;
+            default:
+                Debug.LogWarning("Keine Funktion definiert für diesen Würfel!");
+                break;
+        }
+    }
+	
     /// <summary>
     /// Verschieben in positive x-Richtung
     /// </summary>

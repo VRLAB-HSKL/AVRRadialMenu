@@ -79,19 +79,25 @@ public class RadialMenuTrackpadBasis : MonoBehaviour
         y_ = Input.GetAxis("Vertical");
         x_ = Input.GetAxis("Horizontal");
         PolarCoordinates(segments, x_, y_);
+		GameObject kapsel = GameObject.Find("Kapsel");
+		Mover mover = kapsel.GetComponent<Mover>();
         for (int i = 0; i < segments; i++)
         {
             var cubeRenderer = cubes[i].GetComponent<Renderer>();
             if (newIndex != i)
             {
                 cubeRenderer.material.SetColor("_Color", Color.white);
+				
             }
             else
             {
                 if (ViveInput.GetPress(CCCHand, SelectionButton))
                 {
                     cubeRenderer.material.SetColor("_Color", Color.red);
-                    
+				}
+				else if (ViveInput.GetPressUp(CCCHand, SelectionButton))
+				{
+					mover.ExecuteFunction(i);
                 }
                 else
                 {
@@ -100,7 +106,7 @@ public class RadialMenuTrackpadBasis : MonoBehaviour
             }
         }
     }
-    
+   
     protected void OnEnable()
     {
         ViveInput.AddListenerEx(CCCHand,

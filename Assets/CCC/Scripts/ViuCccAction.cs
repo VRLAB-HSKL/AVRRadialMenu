@@ -24,7 +24,7 @@ public class ViuCccAction : ViuCCCTrackpad
     /// <summary>
     /// Verbindung zu CCC in der Szene aufnehmen und InputManager konfigurieren.
     /// </summary>
-    private void Awake()
+    protected void Awake()
     {
         FindTheCCC();
         if (!TheCCC) return;
@@ -36,7 +36,7 @@ public class ViuCccAction : ViuCCCTrackpad
     /// <summary>
     /// In Enable für die Szene aktivieren wir die  Action.
     /// </summary>
-    private void OnEnable()
+    protected void OnEnable()
     {
         ShowAction.Enable();
     }
@@ -44,7 +44,7 @@ public class ViuCccAction : ViuCCCTrackpad
     /// <summary>
     /// In Disable für die Szenede aktivieren wir die  Action.
     /// </summary>
-    private void DisEnable()
+    protected void DisEnable()
     {
         ShowAction.Disable();
     }
@@ -56,7 +56,7 @@ public class ViuCccAction : ViuCCCTrackpad
     /// Beim Einblenden des CCC verwenden wir die Position
     /// des ausgewählten Objekts für die Position des Prefabs.
     /// </remarks>
-    private void OnRelease(InputAction.CallbackContext ctx)
+    protected void OnRelease(InputAction.CallbackContext ctx)
     {
         var value = ctx.ReadValueAsButton();
         Show = !Show;
