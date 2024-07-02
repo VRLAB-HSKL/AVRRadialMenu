@@ -9,17 +9,14 @@ public class RadialMenuTrackpadBasis : MonoBehaviour
     public GameObject TheCCC;
     public HandRole CCCHand = HandRole.LeftHand;
     public ControllerButton ActivationButton = ControllerButton.Trigger;
-    public ControllerButton SelectionButton = ControllerButton.Grip;
-    public ColliderButtonEventData.InputButton SelectButton = 
-        ColliderButtonEventData.InputButton.PadOrStick;
+    public ControllerButton SelectButton = ControllerButton.Grip;
     public bool Show = false;
-    protected bool Colliders = true;
     protected GameObject m_Controller;
+	protected GameObject m_ControllerCollider;
     protected float x_, y_, angle;
-    public int newIndex;
+    protected int newIndex;
     protected int segments = 4;
     protected GameObject[] cubes;
-    protected GameObject m_ControllerCollider;
     
     protected void Start()
     {
@@ -46,10 +43,7 @@ public class RadialMenuTrackpadBasis : MonoBehaviour
                 Logger.Fatal("Linker Controller nicht gefunden!");
                 return;            
             }
-            if (Colliders == true)
-            {
-                m_ControllerCollider = GameObject.Find("Left");
-            }
+            m_ControllerCollider = GameObject.Find("Left");
         }
         else
         {
@@ -60,10 +54,7 @@ public class RadialMenuTrackpadBasis : MonoBehaviour
                 Logger.Fatal("Rechter Controller nicht gefunden!");
                 return;            
             }
-            if (Colliders == true)
-            {
-                m_ControllerCollider = GameObject.Find("Right");
-            }
+            m_ControllerCollider = GameObject.Find("Right");
         }
         
         Logger.Debug("<<< ViuCCC.Start");
@@ -75,9 +66,8 @@ public class RadialMenuTrackpadBasis : MonoBehaviour
     protected void Update()
     {
         SetPositionAndRotation();
-        Colliders = false;
-        y_ = Input.GetAxis("Vertical");
-        x_ = Input.GetAxis("Horizontal");
+        y_ = ViveInput.GetAxis(CCCHand, ControllerAxis.PadY);
+        x_ = ViveInput.GetAxis(CCCHand, ControllerAxis.PadX);
         PolarCoordinates(segments, x_, y_);
 		GameObject kapsel = GameObject.Find("Kapsel");
 		Mover mover = kapsel.GetComponent<Mover>();
@@ -87,15 +77,14 @@ public class RadialMenuTrackpadBasis : MonoBehaviour
             if (newIndex != i)
             {
                 cubeRenderer.material.SetColor("_Color", Color.white);
-				
             }
             else
             {
-                if (ViveInput.GetPress(CCCHand, SelectionButton))
+                if (ViveInput.GetPress(CCCHand, SelectButton))
                 {
                     cubeRenderer.material.SetColor("_Color", Color.red);
 				}
-				else if (ViveInput.GetPressUp(CCCHand, SelectionButton))
+				else if (ViveInput.GetPressUp(CCCHand, SelectButton))
 				{
 					mover.ExecuteFunction(i);
                 }

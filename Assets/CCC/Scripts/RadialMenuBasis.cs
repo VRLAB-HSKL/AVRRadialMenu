@@ -13,7 +13,6 @@ public class RadialMenuBasis : MonoBehaviour
     public ColliderButtonEventData.InputButton SelectButton = 
         ColliderButtonEventData.InputButton.PadOrStick;
     public bool Show = false;
-    protected bool Colliders = true;
     protected GameObject m_Controller;
     protected GameObject m_ControllerCollider;
     
@@ -36,11 +35,7 @@ public class RadialMenuBasis : MonoBehaviour
                 Logger.Fatal("Linker Controller nicht gefunden!");
                 return;            
             }
-
-            if (Colliders == true)
-            {
-                m_ControllerCollider = GameObject.Find("Right");
-            }
+            m_ControllerCollider = GameObject.Find("Right");
         }
         else
         {
@@ -51,10 +46,7 @@ public class RadialMenuBasis : MonoBehaviour
                 Logger.Fatal("Rechter Controller nicht gefunden!");
                 return;            
             }
-            if (Colliders == true)
-            {
-                m_ControllerCollider = GameObject.Find("Left");
-            }     
+            m_ControllerCollider = GameObject.Find("Left");   
         }
         
         Logger.Debug("<<< ViuCCC.Start");
