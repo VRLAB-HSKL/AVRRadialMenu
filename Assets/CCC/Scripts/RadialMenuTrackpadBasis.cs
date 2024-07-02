@@ -9,7 +9,9 @@ public class RadialMenuTrackpadBasis : MonoBehaviour
     public GameObject TheCCC;
     public HandRole CCCHand = HandRole.LeftHand;
     public ControllerButton ActivationButton = ControllerButton.Trigger;
-    public ControllerButton SelectButton = ControllerButton.Grip;
+    public ControllerButton SelectionButton = ControllerButton.Grip;
+    public ColliderButtonEventData.InputButton SelectButton = 
+        ColliderButtonEventData.InputButton.PadOrStick;
     public bool Show = false;
     protected GameObject m_Controller;
 	protected GameObject m_ControllerCollider;
@@ -17,7 +19,7 @@ public class RadialMenuTrackpadBasis : MonoBehaviour
     protected int newIndex;
     protected int segments = 4;
     protected GameObject[] cubes;
-    
+ 
     protected void Start()
     {
         cubes = new GameObject[segments];
@@ -80,11 +82,11 @@ public class RadialMenuTrackpadBasis : MonoBehaviour
             }
             else
             {
-                if (ViveInput.GetPress(CCCHand, SelectButton))
+                if (ViveInput.GetPress(CCCHand, SelectionButton))
                 {
                     cubeRenderer.material.SetColor("_Color", Color.red);
 				}
-				else if (ViveInput.GetPressUp(CCCHand, SelectButton))
+				else if (ViveInput.GetPressUp(CCCHand, SelectionButton))
 				{
 					mover.ExecuteFunction(i);
                 }
