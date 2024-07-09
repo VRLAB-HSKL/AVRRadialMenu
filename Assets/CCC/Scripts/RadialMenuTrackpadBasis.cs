@@ -65,14 +65,17 @@ public class RadialMenuTrackpadBasis : MonoBehaviour
         TheCCC.SetActive(Show);
     }
     
+
     protected void Update()
     {
+
         SetPositionAndRotation();
         y_ = ViveInput.GetAxis(CCCHand, ControllerAxis.PadY);
         x_ = ViveInput.GetAxis(CCCHand, ControllerAxis.PadX);
         PolarCoordinates(segments, x_, y_);
 		GameObject kapsel = GameObject.Find("Kapsel");
 		Mover mover = kapsel.GetComponent<Mover>();
+        // map cubes to segment and higlight cube if selected and execute function if clicked 
         for (int i = 0; i < segments; i++)
         {
             var cubeRenderer = cubes[i].GetComponent<Renderer>();
@@ -147,6 +150,8 @@ public class RadialMenuTrackpadBasis : MonoBehaviour
     protected static readonly log4net.ILog Logger 
         = log4net.LogManager.GetLogger(typeof(ViuCCC));
     
+
+    // transform analog stick position into polar coordinates for further use
      protected void PolarCoordinates(int nSegments, float x, float y)
      {
          if (x == 0 && y == 0)
@@ -165,6 +170,8 @@ public class RadialMenuTrackpadBasis : MonoBehaviour
          }
      }
      
+
+     // Position is bound to controller position, orientation faces the camera 
      protected void SetPositionAndRotation()
      {
          TheCCC.transform.SetPositionAndRotation(

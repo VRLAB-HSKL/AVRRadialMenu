@@ -15,6 +15,7 @@ using System.Collections.Generic;
 /// </remarks>
 public class ViuCCC : RadialMenuBasis
 { 
+    // set position and rotation according to controller position and orientation
     protected void SetPositionAndRotation()
     {
         TheCCC.transform.SetPositionAndRotation(

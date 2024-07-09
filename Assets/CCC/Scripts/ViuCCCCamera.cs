@@ -15,6 +15,8 @@ using System.Collections.Generic;
 /// </remarks>
 public class ViuCCCCamera : RadialMenuBasis
 { 
+    // rotation is oriented at the cameras orientation -> faces the user 
+    // position is the cameras position with a forward offset added -> positioned in front of the camera
     protected void SetPositionAndRotation()
     {
         TheCCC.transform.SetPositionAndRotation(
@@ -22,6 +24,8 @@ public class ViuCCCCamera : RadialMenuBasis
             Camera.main.transform.rotation);
     }
 
+
+    // position and rotation are constantly updated so they match the users movement
      void Update()
      {
          SetPositionAndRotation();

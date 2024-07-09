@@ -177,12 +177,15 @@ public class ViuCCCController : MonoBehaviour
     private static readonly log4net.ILog Logger 
         = log4net.LogManager.GetLogger(typeof(ViuCCC));
 
-
+    
+    // constantly update position and orientation of the menu 
      void Update()
     {
         MenuControllerFollower();
     }
-    
+
+    // position of the menu is bound to the controllers positon
+    // orientation of the menu is bound to the cameras orientation 
     private void MenuControllerFollower()
     {
         TheCCC.transform.SetPositionAndRotation(

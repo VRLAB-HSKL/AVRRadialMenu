@@ -8,8 +8,11 @@ public class RadialMenuBasis : MonoBehaviour
 {
     public GameObject TheCCC;
     public HandRole CCCHand = HandRole.LeftHand;
+    // Button zum Ein-/Ausblenden des Menus
     public ControllerButton ActivationButton = ControllerButton.Trigger;
+    // Button zum auswählen eines Menu-Elements
     public ControllerButton SelectionButton = ControllerButton.Grip;
+    // Button zum auswählen eines Elements wenn Collider nicht genutzt werden sollen 
     public ColliderButtonEventData.InputButton SelectButton = 
         ColliderButtonEventData.InputButton.PadOrStick;
     public bool Show = false;
