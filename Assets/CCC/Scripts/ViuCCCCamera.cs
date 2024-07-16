@@ -17,7 +17,7 @@ public class ViuCCCCamera : RadialMenuBasis
 { 
     // rotation is oriented at the cameras orientation -> faces the user 
     // position is the cameras position with a forward offset added -> positioned in front of the camera
-    protected void SetPositionAndRotation()
+    protected virtual void SetPositionAndRotation()
     {
         TheCCC.transform.SetPositionAndRotation(
             Camera.main.transform.position + Camera.main.transform.forward * 0.6f,

@@ -5,20 +5,12 @@ using HTC.UnityPlugin.ColliderEvent;
 using System.Collections;
 using System.Collections.Generic;
 
-/// <summary>
-// /Interface und Implementierung des Command Control Cube
-/// auf Basis von Vive Input Utility..
-/// </summary>
-/// <remarks>
-/// Die von dieser Klaasse abgeleiteten Versionen verwenden entweder
-/// das Input System und Unity XR oder Vive Input Utility.
-/// </remarks>
 public class ViuCCCTrackpad : RadialMenuTrackpadBasis
 { 
-    protected void SetPositionAndRotation()
+    protected override void SetPositionAndRotation()
     {
         TheCCC.transform.SetPositionAndRotation(
-            Camera.main.transform.position + Camera.main.transform.forward * 0.6f,
+            m_Controller.transform.position,
             Camera.main.transform.rotation);
     }
 }
