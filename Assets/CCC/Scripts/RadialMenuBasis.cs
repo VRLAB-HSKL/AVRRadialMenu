@@ -1,11 +1,21 @@
+//========= 2023 - -2024 Copyright Manfred Brill. All rights reserved. ===========
 using UnityEngine;
 using HTC.UnityPlugin.Vive;
 using HTC.UnityPlugin.ColliderEvent;
 using System.Collections;
 using System.Collections.Generic;
 
+/// <summary>
+/// Interface und Implementierung des Radial Menus
+/// abgeleitet von RadialMenu und implementiert
+/// das Radial Menu mit Collidern
+/// auf Basis von Vive Input Utility.
+/// </summary>
 public class RadialMenuBasis : RadialMenu
 {
+    /// <summary>
+    /// CCC-Objekt finden und alles initialisieren
+    /// </summary>
     protected void Start()
     {
         Logger.Debug(">>> ViuCCC.Start");
@@ -45,6 +55,8 @@ public class RadialMenuBasis : RadialMenu
         TheCCC.SetActive(Show);
     }
 
-    // Position is bound to controller position, orientation faces the camera 
+	/// <summary>
+    /// Festlegen der Positionierung und Orientierung des Radial Menus.
+    /// </summary>
     protected virtual void SetPositionAndRotation() {}
 }

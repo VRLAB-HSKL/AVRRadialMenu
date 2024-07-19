@@ -1,16 +1,36 @@
+//========= 2023 - -2024 Copyright Manfred Brill. All rights reserved. ===========
 using UnityEngine;
 using HTC.UnityPlugin.Vive;
 using HTC.UnityPlugin.ColliderEvent;
 using System.Collections;
 using System.Collections.Generic;
 
+/// <summary>
+/// Interface und Implementierung des Radial Menus
+/// abgeleitet von RadialMenu und implementiert
+/// das Radial Menu mit Trackpad
+/// auf Basis von Vive Input Utility.
+/// </summary>
 public class RadialMenuTrackpadBasis : RadialMenu
 {
-    protected float x_, y_, angle;
+	/// <summary>
+    /// Index des ausgewählten Segments
+    /// </summary>
     protected int newIndex;
+	
+	/// <summary>
+    /// Anzahl der Segmente
+    /// </summary>
     protected int segments = 4;
+	
+	/// <summary>
+    /// GameObject-Array für die einzelnen Cubes
+    /// </summary>
     protected GameObject[] cubes;
  
+    /// <summary>
+    /// CCC-Objekt finden und alles initialisieren
+    /// </summary>
     protected void Start()
     {
         cubes = new GameObject[segments];
@@ -56,12 +76,17 @@ public class RadialMenuTrackpadBasis : RadialMenu
         TheCCC.SetActive(Show);
     }
     
-
+    /// <summary>
+    /// Ermittlung des ausgewählten Cubes und Ausführung der dem Cube zugehörigen Funktion.
+    /// </summary>
+	/// <remarks>
+	/// Die Funktionen der einzelnen Cubes wird in der Klasse Mover festgelegt.
+	/// </remarks>
     protected void Update()
     {
         SetPositionAndRotation();
-        y_ = ViveInput.GetAxis(CCCHand, ControllerAxis.PadY);
-        x_ = ViveInput.GetAxis(CCCHand, ControllerAxis.PadX);
+        float y_ = ViveInput.GetAxis(CCCHand, ControllerAxis.PadY);
+        float x_ = ViveInput.GetAxis(CCCHand, ControllerAxis.PadX);
         PolarCoordinates(segments, x_, y_);
 		GameObject kapsel = GameObject.Find("Kapsel");
 		Mover mover = kapsel.GetComponent<Mover>();
@@ -91,7 +116,9 @@ public class RadialMenuTrackpadBasis : RadialMenu
         }
     }    
 
-    // transform analog stick position into polar coordinates for further use
+	/// <summary>
+    /// Berechnung des ausgewählten Segments auf Basis von Polarkoordinaten.
+    /// </summary>
      protected void PolarCoordinates(int nSegments, float x, float y)
      {
          if (x == 0 && y == 0)
@@ -101,7 +128,7 @@ public class RadialMenuTrackpadBasis : RadialMenu
          else
          {
              float segmentAngle = 360f / nSegments;
-             angle = Mathf.Atan2(x, y) * Mathf.Rad2Deg + segmentAngle/2;
+             float angle = Mathf.Atan2(x, y) * Mathf.Rad2Deg + segmentAngle/2;
              if (angle < 0)
              {
                  angle += 360;
@@ -111,6 +138,8 @@ public class RadialMenuTrackpadBasis : RadialMenu
      }
      
 
-     // Position is bound to controller position, orientation faces the camera 
+	/// <summary>
+    /// Festlegen der Positionierung und Orientierung des Radial Menus.
+    /// </summary>
      protected virtual void SetPositionAndRotation() {}
 }

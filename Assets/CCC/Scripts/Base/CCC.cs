@@ -2,16 +2,16 @@
 using UnityEngine;
 
 /// <summary>
-/// Basisklasse für Command Control Cube
+/// Basisklasse für Radial Menu
 /// </summary>
 /// <remarks>
-/// Wir initialisieren die drei Schichten und setzen die Sichtbarkeit.
+/// Wir initialisieren die Schicht und setzen die Sichtbarkeit.
 /// </remarks>
 public class CCC : MonoBehaviour
 {
 
     /// <summary>
-    /// GameObjects für die drei Schichten
+    /// GameObjects für die Schicht
     /// </summary>
     protected GameObject m_Layer1;
 

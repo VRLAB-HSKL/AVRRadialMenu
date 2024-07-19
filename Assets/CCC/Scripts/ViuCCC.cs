@@ -6,16 +6,13 @@ using System.Collections;
 using System.Collections.Generic;
 
 /// <summary>
-// /Interface und Implementierung des Command Control Cube
-/// auf Basis von Vive Input Utility.
+/// Radial Menu mit Collidern, das sich der Stelle des Controllers erscheint.
 /// </summary>
-/// <remarks>
-/// Die von dieser Klaasse abgeleiteten Versionen verwenden entweder
-/// das Input System und Unity XR oder Vive Input Utility.
-/// </remarks>
 public class ViuCCC : RadialMenuBasis
 { 
-    // set position and rotation according to controller position and orientation
+	/// <summary>
+    /// Festlegen der Positionierung und Orientierung des Radial Menus.
+    /// </summary>
     protected override void SetPositionAndRotation()
     {
         TheCCC.transform.SetPositionAndRotation(

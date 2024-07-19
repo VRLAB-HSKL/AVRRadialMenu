@@ -6,8 +6,14 @@ using UnityEngine;
 /// </summary>
 public class Mover : MonoBehaviour
 {
+    /// <summary>
+    /// Delta für die Veränderung der Koordinaten
+    /// </summary>
     public float Delta = 0.1f;
     
+	/// <summary>
+    /// Zuweisung der Funktionen zu einem Cube für Radial Menu mit Trackpad
+    /// </summary>
 	public void ExecuteFunction(int cubeID)
     {
         switch (cubeID)

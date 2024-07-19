@@ -3,19 +3,19 @@ using UnityEngine;
 using UnityEngine.InputSystem;
 
 /// <summary>
-/// Controller für das ein- und ausblenden der CCC mit dem Keyboard.
+/// Controller für das ein- und ausblenden des Radial Menus mit dem Keyboard.
 /// Diese Klasse realisiert die Interaktionen auf der Basis des Input Systems.
 /// </summary>
 public class ViuCccAction : ViuCCCTrackpad
 {
     /// <summary>
-    /// Action für das Ein- und Ausblendendes CCC
+    /// Action für das Ein- und Ausblenden des Radial Menus
     /// </summary>
     /// <remarks>
     /// Diese Klasse wird als Komponente einem anderen GameObject
     /// hinzugefügt.
     ///
-    /// Damit wird sicher gestellt, dass wir CCC in der
+    /// Damit wird sicher gestellt, dass wir Radial Menu in der
     /// Szene erst bei Bedarf einblenden können.
     /// </remarks>
     [Tooltip("Input Action für Ein- und Ausblenden")]
@@ -52,17 +52,11 @@ public class ViuCccAction : ViuCCCTrackpad
     /// <summary>
     /// Ein- und Ausblenden des CCC Prefabs.
     ///<summary>
-    /// <remarks>
-    /// Beim Einblenden des CCC verwenden wir die Position
-    /// des ausgewählten Objekts für die Position des Prefabs.
-    /// </remarks>
     protected void OnRelease(InputAction.CallbackContext ctx)
     {
         var value = ctx.ReadValueAsButton();
         Show = !Show;
         
         TheCCC.SetActive(Show);
-        //if (Show) 
-            //TheCCC.transform.position = PlacementObject.transform.position;
     }
 }
