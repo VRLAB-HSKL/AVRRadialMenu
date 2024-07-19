@@ -1,5 +1,8 @@
 # AVRRadialMenu
 
+![Unity](https://img.shields.io/badge/Unity-100000?style=for-the-badge&logo=unity&logoColor=white)
+![C#](https://img.shields.io/badge/C%23-239120?style=for-the-badge&logo=c-sharp&logoColor=white)
+
 *This document serves as a technical documentation of the project.*
 
 ## 1. Project Description
@@ -44,4 +47,43 @@ A concept was then developed for how the menus should be operated and how and wh
 
 In order to implement this, it was necessary to introduce new logic at several points in the project, which is why the project structure is described below.
 
+## 2. Project Structure
+The project is structured as follows:
+```bash
+AVRRadialMenu
+│ 
+Assets
+│ 
+├── CCC
+│	│
+│	├──Prefabs					  # Prefabs used for the Menu design 	
+│	│
+│   ├── Scripts    				  # Scripts used to control the  behaviour of the menu 
+│   │	 └──Base          		  # Base logic to initialize components 
+│   │    │
+│	│	 ...
+│   │
+│	...
+│
+├── Resources					  # Log4Net Config-Files 
+│	└──...
+│ 
+├── Scenes						 # Szenes to Showcase different Menu Use Cases 
+│	└──...
+│
+├── Scripts 
+│	 └──Callbacks        	  # Logic Scripts bound to Menu cubes  
+│	 └──Logging          	  # Scripts used to log debug information  
+│	 └──...
+│	 │
+│    ...
+│	
+...
+```
+
+### 2.1 Prefabs, components and scenes 
+
+### 3 Configuration and Setup 
+
+### 4 Use cases and needed files 
 
