@@ -91,14 +91,19 @@ The Resources folder contains the config files for Log4net, the logging framewor
 
 The Scenes folder contains all the scenes that were created during the project. These are basic scenes with different functionality of the radial menu. In all cases, the same functions are called up by selecting a cube, only the way in which the menu is displayed or the selection of a cube differs from scene to scene. You can therefore choose from different variants for use in your own projects. The following section goes into more detail about these variants and what is required to integrate them into your own project. 
 
-
 ### 3 Configuration and Setup 
+
+
 
 ### 4 Use cases and needed files 
 
 ### 5 ToDos and possible improvements 
 
---> Generation of different sized Menus 
+For future changes to this project, there are several possible improvements to which particular attention should be paid. 
+
+For example, an implementation that makes it possible to generate menus with dynamic sizes without having to change the respective prefab by hand is pending. The logic for the input via trackpad must also be adapted for this, as the number of segments must be adapted to the number of cubes. However, this revision should be done quickly. In the worst case, a separate prefab must be created for a certain number of menu items and then a drop-down menu must be used to select how many cubes should be used to create a menu. 
+
+
 --> improved Inheritance structure for scripts 
 --> Textures for Cubes 
 --> Text on all 4 Cube sides 
