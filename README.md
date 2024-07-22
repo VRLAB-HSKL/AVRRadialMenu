@@ -52,28 +52,28 @@ The project is structured as follows:
 ```bash
 AVRRadialMenu
 │ 
-Assets
+Assets				   # Main contents of the project 
 │ 
 ├── CCC
 │	│
-│	├──Prefabs					  # Prefabs used for the Menu design 	
+│	├──Prefabs		   # Prefabs used for the Menu design 	
 │	│
-│   ├── Scripts    				  # Scripts used to control the  behaviour of the menu 
-│   │	 └──Base          		  # Base logic to initialize components 
+│   ├── Scripts    	   # Scripts used to control the  behaviour of the menu 
+│   │	 └──Base       # Base logic to initialize components 
 │   │    │
 │	│	 ...
 │   │
 │	...
 │
-├── Resources					  # Log4Net Config-Files 
+├── Resources		   # Log4Net Config-Files 
 │	└──...
 │ 
-├── Scenes						 # Szenes to Showcase different Menu Use Cases 
+├── Scenes			   # Szenes to Showcase different Menu Use Cases 
 │	└──...
 │
 ├── Scripts 
-│	 └──Callbacks        	  # Logic Scripts bound to Menu cubes  
-│	 └──Logging          	  # Scripts used to log debug information  
+│	 └──Callbacks      # Logic Scripts bound to Menu cubes  
+│	 └──Logging        # Scripts used to log debug information  
 │	 └──...
 │	 │
 │    ...
@@ -83,7 +83,24 @@ Assets
 
 ### 2.1 Prefabs, components and scenes 
 
+Prefabs are used in this project to determine the appearance of individual components. Prefabs are reusable building blocks that can in turn be used in other prefabs. The prefab of the radial menu is again made up of prefabs. To change the appearance of the cubes, the corresponding prefab must therefore be adapted. If the appearance of the menu is to be changed, its prefab, which contains the prefab of a single cube, must be adapted. All these files are located in the prefabs folder. 
+
+The Scripts folder contains all scripts that control the functionality of the Radial Menu. Please note that there are two scripts folders that are on different levels. The scripts that control the behavior of the menu are located in the Scripts folder within the CCC folder. The Scripts folder in the Assets folder contains the scripts that are called when a menu cube is selected. These can be exchanged for scripts with their own logic to change the actions that are executed when a cube is selected and thus customize the menu to your own needs. However, the scripts in the scripts folder within the CCC folder should not be changed. As already mentioned, they contain the necessary logic for using the radial menu. However, the various possible uses do not always require all scripts, so depending on the desired use, some scripts can be omitted.  
+
+The Resources folder contains the config files for Log4net, the logging framework used in the scripts. These are necessary if the menu is to be operated with Log4net outputs in the scripts, otherwise they can be omitted. In this case, however, the logging outputs must be removed from the scripts, which is not recommended at this point. 
+
+The Scenes folder contains all the scenes that were created during the project. These are basic scenes with different functionality of the radial menu. In all cases, the same functions are called up by selecting a cube, only the way in which the menu is displayed or the selection of a cube differs from scene to scene. You can therefore choose from different variants for use in your own projects. The following section goes into more detail about these variants and what is required to integrate them into your own project. 
+
+
 ### 3 Configuration and Setup 
 
 ### 4 Use cases and needed files 
+
+### 5 ToDos and possible improvements 
+
+--> Generation of different sized Menus 
+--> improved Inheritance structure for scripts 
+--> Textures for Cubes 
+--> Text on all 4 Cube sides 
+
 
