@@ -16,10 +16,11 @@ Functions and methods can be bound to the cubes, which makes it possible to cont
 ### 1.1 Background 
 Radial menus are a well-known and simple way of providing users of an application with a menu. Since 3D applications often offer various options to customize or control the application, it makes sense to make them accessible in such a way that a user can access them quickly and as intuitively as possible. This gave rise to the motivation to develop a radial menu for 3D applications. Care is taken to ensure that the resulting menu can be integrated as universally as possible into different applications, i.e. that various options are available for positioning or operating the menu. 
 
-The project is based on the concept of the Command and Control Cube (CCC), a cube consisting of several levels whose individual levels are shown or hidden depending on the position of the controller. For details of how the CCC works, please refer to the book [VR Kompakt]() by Professor Manfred Brill. In his book, he explains the concept and implementation of the CCC, which we will build on here. For this reason, we also refer to the corresponding repository for the book for a basic understanding of the project. In diesem kann der [Code des CCC](https://github.com/MBrill/VRKompakt/tree/main/Unity/VR/VRKVIU/SystemControl/CommandControlCube) eingesehen werden. 
+The project is based on the concept of the Command and Control Cube (CCC), a cube consisting of several levels whose individual levels are shown or hidden depending on the position of the controller. For details of how the CCC works, please refer to the book [VR Kompakt](https://link.springer.com/book/10.1007/978-3-658-41245-6) by Professor Manfred Brill. In his book, he explains the concept and implementation of the CCC, which we will build on here. For this reason, we also refer to the corresponding repository for the book for a basic understanding of the project. In diesem kann der [Code des CCC](https://github.com/MBrill/VRKompakt/tree/main/Unity/VR/VRKVIU/SystemControl/CommandControlCube) eingesehen werden. 
 
-//Link zum Buch VR-Kompakt einfügen 
-//Bild CCC als Basis einfügen 
+
+![dashboard-frontend-summary.png](docs/dashboard-frontend-summary.png)
+
 
 ### 1.2 Implementation Approach
 Überarbeitung des CCC, dieser dient als Basis, vereinfachen der Prefabs, ergänzen neuer Logik, Lösen von reiner Verwendung mit Collidern, 
@@ -52,31 +53,31 @@ The project is structured as follows:
 ```bash
 AVRRadialMenu
 │ 
-Assets				   # Main contents of the project 
+Assets				# Main contents of the project 
 │ 
 ├── CCC
 │	│
-│	├──Prefabs		   # Prefabs used for the Menu design 	
+│	├──Prefabs		# Prefabs used for the Menu design 	
 │	│
-│   ├── Scripts    	   # Scripts used to control the  behaviour of the menu 
-│   │	 └──Base       # Base logic to initialize components 
-│   │    │
-│	│	 ...
+│   ├── Scripts    	# Scripts used to control the  behaviour of the menu 
+│   │	└──Base    # Base logic to initialize components 
+│   │   │
+│	│	...
 │   │
 │	...
 │
-├── Resources		   # Log4Net Config-Files 
+├── Resources		# Log4Net Config-Files 
 │	└──...
 │ 
-├── Scenes			   # Szenes to Showcase different Menu Use Cases 
+├── Scenes			# Szenes to Showcase different Menu Use Cases 
 │	└──...
 │
 ├── Scripts 
-│	 └──Callbacks      # Logic Scripts bound to Menu cubes  
-│	 └──Logging        # Scripts used to log debug information  
-│	 └──...
-│	 │
-│    ...
+│	└──Callbacks   # Logic Scripts bound to Menu cubes  
+│	└──Logging     # Scripts used to log debug information  
+│	└──...
+│	│
+│   ...
 │	
 ...
 ```
@@ -103,9 +104,10 @@ For future changes to this project, there are several possible improvements to w
 
 For example, an implementation that makes it possible to generate menus with dynamic sizes without having to change the respective prefab by hand is pending. The logic for the input via trackpad must also be adapted for this, as the number of segments must be adapted to the number of cubes. However, this revision should be done quickly. In the worst case, a separate prefab must be created for a certain number of menu items and then a drop-down menu must be used to select how many cubes should be used to create a menu. 
 
+It would also make sense to further improve the inheritance structure and thus prepare for the introduction of new features. It may also be possible to further simplify the code and make it clearer. This will also make it easier to introduce new features in the future. 
 
---> improved Inheritance structure for scripts 
---> Textures for Cubes 
---> Text on all 4 Cube sides 
+When labeling the cubes, it would make sense to only have to specify them once and then display them on all 4 sides of a cube instead of just one as is currently the case. This could improve usability in 3D applications in which the menu is placed in the room. As the user can move freely around the menu here, it would only make sense if a label is also given on all sides. The difficulty here is probably to set the text only once per cube, otherwise the susceptibility to errors increases greatly and the usability becomes worse. 
+
+In addition to the texts, it would be useful to be able to assign a texture or an image to cubes that is displayed on all 4 sides. In this way, more complicated actions could be represented whose description in text form would be difficult to realize or would require too many words. Care must be taken here to ensure that images of different sizes are still displayed sharply and are not completely pixelated. 
 
 
