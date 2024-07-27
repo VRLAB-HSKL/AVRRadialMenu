@@ -11,12 +11,10 @@ We developed a reusable approach with which different types of radial menus can 
 
 Functions and methods can be bound to the cubes, which makes it possible to control various aspects of an application using only the menu.
 
-//Bild einfaches 2D-Radial Menu 
-
 ### 1.1 Background 
 Radial menus are a well-known and simple way of providing users of an application with a menu. Since 3D applications often offer various options to customize or control the application, it makes sense to make them accessible in such a way that a user can access them quickly and as intuitively as possible. This gave rise to the motivation to develop a radial menu for 3D applications. Care is taken to ensure that the resulting menu can be integrated as universally as possible into different applications, i.e. that various options are available for positioning or operating the menu. 
 
-The project is based on the concept of the Command and Control Cube (CCC), a cube consisting of several levels whose individual levels are shown or hidden depending on the position of the controller. For details of how the CCC works, please refer to the book [VR Kompakt](https://link.springer.com/book/10.1007/978-3-658-41245-6) by Professor Manfred Brill. In his book, he explains the concept and implementation of the CCC, which we will build on here. For this reason, we also refer to the corresponding repository for the book for a basic understanding of the project. In diesem kann der [Code des CCC](https://github.com/MBrill/VRKompakt/tree/main/Unity/VR/VRKVIU/SystemControl/CommandControlCube) eingesehen werden. 
+The project is based on the concept of the Command and Control Cube (CCC), a cube consisting of several levels whose individual levels are shown or hidden depending on the position of the controller. For details of how the CCC works, please refer to the book [VR Kompakt](https://link.springer.com/book/10.1007/978-3-658-41245-6) by Professor Manfred Brill. In his book, he explains the concept and implementation of the CCC, which we will build on here. For this reason, we also refer to the corresponding repository for the book for a basic understanding of the project. The [Code of the CCC](https://github.com/MBrill/VRKompakt/tree/main/Unity/VR/VRKVIU/SystemControl/CommandControlCube) can be viewed here.
 
 <div align="center" width="100%"><img src="Documents/RadialMenu.gif" /></div>
 
@@ -95,8 +93,25 @@ The Scenes folder contains all the scenes that were created during the project. 
 
 ### 3 Configuration and Setup 
 
+In order to use the application, the ViveInputUtility (VIU) must be integrated by Vive. This can be downloaded from the [Vive repository](https://github.com/ViveSoftware/ViveInputUtility-Unity/releases) on GitHub. The downloaded source zip file must be unpacked and the content pasted into the HTC.UnityPlugin folder. Then you must specify in the project settings whether the application should be executed via an HMD or in the simulator. Once this step has been completed, the next step is to prepare the application for your own use case. This is done similarly for all options and is explained here with screenshots for the example of control using a trackpad. 
 
+Here, the script that implements the logic for the trackpad must be assigned to the CCCController object. With its help, there are then several selection options that can be used to adapt the menu to your own use case. 
 
+<div align="center" width="100%"><img src="Documents/MenuOptionsSetup.png"/></div>
+
+As can be seen in the screenshot, the CCC object must be assigned to the script. You can then select whether the operation should be carried out with the left or right hand and which button should be used to show or hide the menu. In addition, a button can be defined with which a cube marked with a highlight can be selected and thus the associated action can be triggered. In the case of operation using a trackpad, a Select button can also be selected, which can then be used to highlight cubes. The Show checkbox indicates whether the menu is shown or hidden. If it is selected, the menu is displayed at the start of the application. 
+
+The text shown on the cubes in the screenshot can also be customized individually for each cube when used in your own applications. To do this, the text element assigned to a cube must be edited, for which the layer1 assigned to the CCC object must be expanded. This contains all 4 cubes that belong to the menu, which in turn each have a canvas assigned to them on which the text can be displayed. The text is displayed using TextMeshPro and the text can simply be entered in the editor. The only disadvantage of this option is that all layers that are to be edited must always be expanded, which means that changing a text takes longer than if the texts were assigned using a script and could be done directly with the operating hand, for example. 
+
+<div align="center" width="100%"><img src="Documents/TextCubesSetup.png"/></div>
+
+The assignment of an action to be executed when a cube is selected can also not be done via a script, but must be done directly via the respective object of the cube to which the action is to be assigned. To do this, the CCC object must be expanded again and layer1 and the respective cube object must be selected. Here too, the assignment is always made individually and via the editor. It is important to know that when assigning several scripts to a cube, both are always called when the cube is selected, i.e. it is not possible to make a selection here. The assignment is also shown again in the following screenshot.  
+
+<div align="center" width="100%"><img src="Documents/ActionCubeSetup.png"/></div>
+
+Depending on the structure of the application, the action script must also be assigned to the object on which the action is to be executed (if it is to affect an object). In the case of all the examples provided, this is the chapter in the base scene, to which the script is also assigned once again. For the sake of completeness, this assignment is also shown again in the following screenshot and thus explained. 
+
+<div align="center" width="100%"><img src="Documents/ActionToObjectSetup.png"/></div>
 
 ### 4 Use cases and needed files 
 
