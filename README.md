@@ -115,6 +115,15 @@ Depending on the structure of the application, the action script must also be as
 
 ### 4 Use cases and needed files 
 
+As described above, the menu application can be used in different variants, although not all scripts are required for all variants. For this reason, an overview of the most common variants and which scripts are required to operate them is provided below. 
+
+| Use cases               | Needed Scripts                                                                                       |
+|-------------------------|------------------------------------------------------------------------------------------------|
+| Menu bound to camera    | CCC, CCCubeEventManager, LayerEventManager, ViuCCCCamera, RadialMenuBasis, RadialMenu          |
+| Menu bound to controller| CCC, CCCubeEventManager, LayerEventManager, RadialMenuTrackpadBasis, RadialMenu, ViuCCCTrackpad|
+| Menu positioned in room | CCC, CCCubeEventManager, LayerEventManager, RadialMenuBasis, RadialMenu
+
+
 ### 5 ToDos and possible improvements 
 
 For future changes to this project, there are several possible improvements to which particular attention should be paid. 
