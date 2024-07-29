@@ -91,7 +91,7 @@ The Resources folder contains the config files for Log4net, the logging framewor
 
 The Scenes folder contains all the scenes created during the project. These are basic scenes showcasing different functionalities of the radial menu. In all cases, the same functions are called by selecting a cube; only the display method or cube selection varies between scenes. You can choose different variants for use in your own projects. The following section provides more details on these variants and how to integrate them into your project.
 
-## 3 Configuration and Setup 
+## 3. Configuration and Setup 
 To use the application, you must integrate the ViveInputUtility (VIU) by Vive. This can be downloaded from the [Vive repository](https://github.com/ViveSoftware/ViveInputUtility-Unity/releases) on GitHub. After downloading, import the package into your Unity project. In the preferences, you can specify whether the application should run via an HMD or in the simulator. Once this is set up, the next step is to prepare the application for your specific use case. The process is similar for all options and is demonstrated here with screenshots using the example of trackpad control.
 
 Here, the script that implements the logic for the trackpad must be assigned to the CCCController object. With its help, there are then several selection options that can be used to adapt the menu to your own use case. 
@@ -112,7 +112,7 @@ Depending on the structure of the application, the action script must also be as
 
 <div align="center" width="100%"><img src="Documents/ActionToObjectSetup.png"/></div>
 
-## 4 Use cases and needed files 
+## 4. Use cases and needed files 
 
 As mentioned earlier, the menu application can be utilized in various configurations, and not all scripts are necessary for every variant. Therefore, an overview of the most common variants and the scripts required for each is provided below.
 
@@ -123,7 +123,7 @@ As mentioned earlier, the menu application can be utilized in various configurat
 | Menu positioned in room | CCC, CCCubeEventManager, LayerEventManager, RadialMenuBasis, RadialMenu
 
 
-## 5 Future enhancements and potential improvements
+## 5. Future enhancements and potential improvements
 Several improvements are worth considering for future updates to this project:
 
 One major enhancement would be to implement dynamic menu sizing, allowing menus to adjust their size automatically without manual changes to the prefab. This would involve updating the trackpad input logic to accommodate a variable number of segments. As a temporary solution, creating separate prefabs for different menu sizes and using a dropdown menu to select the number of cubes could be considered.
