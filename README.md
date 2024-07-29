@@ -91,7 +91,7 @@ The Resources folder contains the config files for Log4net, the logging framewor
 
 The Scenes folder contains all the scenes that were created during the project. These are basic scenes with different functionality of the radial menu. In all cases, the same functions are called up by selecting a cube, only the way in which the menu is displayed or the selection of a cube differs from scene to scene. You can therefore choose from different variants for use in your own projects. The following section goes into more detail about these variants and what is required to integrate them into your own project. 
 
-### 3 Configuration and Setup 
+## 3 Configuration and Setup 
 
 In order to use the application, the ViveInputUtility (VIU) must be integrated by Vive. This can be downloaded from the [Vive repository](https://github.com/ViveSoftware/ViveInputUtility-Unity/releases) on GitHub. The downloaded source zip file must be unpacked and the content pasted into the HTC.UnityPlugin folder. Then you must specify in the project settings whether the application should be executed via an HMD or in the simulator. Once this step has been completed, the next step is to prepare the application for your own use case. This is done similarly for all options and is explained here with screenshots for the example of control using a trackpad. 
 
@@ -113,7 +113,7 @@ Depending on the structure of the application, the action script must also be as
 
 <div align="center" width="100%"><img src="Documents/ActionToObjectSetup.png"/></div>
 
-### 4 Use cases and needed files 
+## 4 Use cases and needed files 
 
 As described above, the menu application can be used in different variants, although not all scripts are required for all variants. For this reason, an overview of the most common variants and which scripts are required to operate them is provided below. 
 
@@ -124,7 +124,7 @@ As described above, the menu application can be used in different variants, alth
 | Menu positioned in room | CCC, CCCubeEventManager, LayerEventManager, RadialMenuBasis, RadialMenu
 
 
-### 5 ToDos and possible improvements 
+## 5 ToDos and possible improvements 
 
 For future changes to this project, there are several possible improvements to which particular attention should be paid. 
 
