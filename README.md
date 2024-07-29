@@ -6,44 +6,44 @@
 *This document serves as a technical documentation of the project.*
 
 ## 1. Project Description
-This project was developed as part of a Master's program on Augumented and Virtual Reality in Computer Science. 
-We developed a reusable approach with which different types of radial menus can be quickly and easily integrated into 3D applications. The structure of the application was chosen in such a way that a high degree of reusability is guaranteed.
+This project was developed as part of the "Augmented and Virtual Reality" course in the Master's program in Computer Science at the University of Applied Sciences Kaiserslautern.
+We developed a versatile approach that enables the quick and easy integration of various types of radial menus into 3D applications in Unity. The application's structure was deliberately designed to ensure a high level of reusability.
 
-Functions and methods can be bound to the cubes, which makes it possible to control various aspects of an application using only the menu.
+Functions and methods can be assigned to the cubes, allowing control over various aspects of an application solely through the menu.
 
 ### 1.1 Background 
-Radial menus are a well-known and simple way of providing users of an application with a menu. Since 3D applications often offer various options to customize or control the application, it makes sense to make them accessible in such a way that a user can access them quickly and as intuitively as possible. This gave rise to the motivation to develop a radial menu for 3D applications. Care is taken to ensure that the resulting menu can be integrated as universally as possible into different applications, i.e. that various options are available for positioning or operating the menu. 
+Radial menus are a well-known and straightforward way of providing users with a menu in an application. Since 3D applications often offer various options to customize or control the application, it is logical to make these options easily and intuitively accessible to users. This motivated the development of a radial menu for 3D applications. The goal was to ensure the resulting menu could be universally integrated into different applications, offering various options for positioning and operation.
 
-The project is based on the concept of the Command and Control Cube (CCC), a cube consisting of several levels whose individual levels are shown or hidden depending on the position of the controller. For details of how the CCC works, please refer to the book [VR Kompakt](https://link.springer.com/book/10.1007/978-3-658-41245-6) by Professor Manfred Brill. In his book, he explains the concept and implementation of the CCC, which we will build on here. For this reason, we also refer to the corresponding repository for the book for a basic understanding of the project. The [Code of the CCC](https://github.com/MBrill/VRKompakt/tree/main/Unity/VR/VRKVIU/SystemControl/CommandControlCube) can be viewed here.
+The project is based on the concept of the Command and Control Cube (CCC), a cube consisting of several layers whose individual layers are shown or hidden depending on the position of the controller. For details on how the CCC works, please refer to the book [VR Kompakt](https://link.springer.com/book/10.1007/978-3-658-41245-6) by Professor Manfred Brill. In his book, he explains the concept and implementation of the CCC, which we build on here. For a basic understanding of the project, please refer to the corresponding repository for the book. The [Code of the CCC](https://github.com/MBrill/VRKompakt/tree/main/Unity/VR/VRKVIU/SystemControl/CommandControlCube) can be viewed here.
 
 <div align="center" width="100%"><img src="Documents/RadialMenu.gif" /></div>
 
 ### 1.2 Implementation Approach
 
-We have decided to base our application on the implementation of the CCC by Manfred Brill. This meant that the required prefabs and logics were already available, which saved a lot of work. At the same time, it enables a better understanding and better reusability.
+We decided to base our application on Manfred Brill's implementation of the CCC. This provided the necessary prefabs and logic, significantly reducing the workload and enhancing understanding and reusability.
 
 <div align="center" width="100%"><img src="Documents/CCC.png" /></div>
 
-In order to achieve the goals of our project, the first step was to adapt the existing logic and prefabs in the CCC to our use case:
+To achieve our project goals, we first adapted the existing logic and prefabs in the CCC to fit our use case:
 
-* Reduction of the CCC to a single level
-* Reduce the prefab of a layer to 4 cubes 
-* Reduce prefab of a single cube
-* Remove unnecessary logic
+* Simplified the CCC to a single layer
+* Reduced the layer's prefab to four cubes 
+* Reduced prefab of a single cube
+* Removed unnecessary logic
 
-A concept was then developed for how the menus should be operated and how and where they should be positioned. A concept was then developed for how the menus should be operated and how and where they should be positioned. We came up with the following options:
+Next, we developed a concept for how the menus should be operated and positioned, resulting in the following options:
 
 * Positioning in the scene
-* Position of the menu follows the controller 
-* Position of the menu in front of the camera following the direction of view 
+* Menu position follows the controller
+* Menu position in front of the camera, aligned with the direction of view
 ###
-* Orientation according to the position of the controller 
-* Orientation according to the direction of view of the user/camera
+* Orientation based on the controller's position
+* Orientation aligned with the user's/camera's direction of view
 ###
 * Operation by moving the controller/collider 
 * Operation via touch or trackpad 
 
-In order to implement this, it was necessary to introduce new logic at several points in the project, which is why the project structure is described below.
+To implement these features, we introduced new logic at several points in the project, which is why the project structure is described below.
 
 ## 2. Project Structure
 The project is structured as follows:
@@ -74,34 +74,33 @@ Assets				# Main contents of the project
 │	└──Logging		# Scripts used to log debug information  
 │	└──...
 │	│
-│   ...
+│	...
 │	
 ...
 ```
 
 ### 2.1 Prefabs, components and scenes 
 
-Prefabs are used in this project to determine the appearance of individual components. Prefabs are reusable building blocks that can in turn be used in other prefabs. The prefab of the radial menu is again made up of prefabs. To change the appearance of the cubes, the corresponding prefab must therefore be adapted. If the appearance of the menu is to be changed, its prefab, which contains the prefab of a single cube, must be adapted. All these files are located in the prefabs folder. 
+Prefabs are used in this project to determine the appearance of individual components. They are reusable building blocks that can be incorporated into other prefabs. The radial menu's prefab is composed of other prefabs. To change the appearance of the cubes, the corresponding prefab must be modified. If the menu's appearance needs to be changed, its prefab, which includes the prefab of a single cube, must be adjusted. All these files are located in the prefabs folder.
 
 <div align="center" width="100%"><img src="Documents/RadialMenuPrefab.png" /></div>
 
-The Scripts folder contains all scripts that control the functionality of the Radial Menu. Please note that there are two scripts folders that are on different levels. The scripts that control the behavior of the menu are located in the Scripts folder within the CCC folder. The Scripts folder in the Assets folder contains the scripts that are called when a menu cube is selected. These can be exchanged for scripts with their own logic to change the actions that are executed when a cube is selected and thus customize the menu to your own needs. However, the scripts in the scripts folder within the CCC folder should not be changed. As already mentioned, they contain the necessary logic for using the radial menu. However, the various possible uses do not always require all scripts, so depending on the desired use, some scripts can be omitted.  
+The Scripts folder contains all scripts that control the functionality of the Radial Menu. Note that there are two scripts folders at different levels. The scripts controlling the menu's behavior are in the Scripts folder within the CCC folder. The Scripts folder in the Assets folder contains scripts called when a menu cube is selected. These can be replaced with custom scripts to modify the actions executed when a cube is selected, allowing menu customization. However, the scripts within the CCC folder's Scripts folder should not be altered as they contain the essential logic for using the radial menu. Depending on the desired use, not all scripts may be needed, and some can be omitted.
 
-The Resources folder contains the config files for Log4net, the logging framework used in the scripts. These are necessary if the menu is to be operated with Log4net outputs in the scripts, otherwise they can be omitted. In this case, however, the logging outputs must be removed from the scripts, which is not recommended at this point. 
+The Resources folder contains the config files for Log4net, the logging framework used in the scripts. These are necessary if the menu is to be operated with Log4net outputs in the scripts; otherwise, they can be omitted. However, the logging outputs must be removed from the scripts if Log4net is not used, which is not recommended.
 
-The Scenes folder contains all the scenes that were created during the project. These are basic scenes with different functionality of the radial menu. In all cases, the same functions are called up by selecting a cube, only the way in which the menu is displayed or the selection of a cube differs from scene to scene. You can therefore choose from different variants for use in your own projects. The following section goes into more detail about these variants and what is required to integrate them into your own project. 
+The Scenes folder contains all the scenes created during the project. These are basic scenes showcasing different functionalities of the radial menu. In all cases, the same functions are called by selecting a cube; only the display method or cube selection varies between scenes. You can choose different variants for use in your own projects. The following section provides more details on these variants and how to integrate them into your project.
 
 ## 3 Configuration and Setup 
-
-In order to use the application, the ViveInputUtility (VIU) must be integrated by Vive. This can be downloaded from the [Vive repository](https://github.com/ViveSoftware/ViveInputUtility-Unity/releases) on GitHub. The downloaded source zip file must be unpacked and the content pasted into the HTC.UnityPlugin folder. Then you must specify in the project settings whether the application should be executed via an HMD or in the simulator. Once this step has been completed, the next step is to prepare the application for your own use case. This is done similarly for all options and is explained here with screenshots for the example of control using a trackpad. 
+To use the application, you must integrate the ViveInputUtility (VIU) by Vive. This can be downloaded from the [Vive repository](https://github.com/ViveSoftware/ViveInputUtility-Unity/releases) on GitHub. After downloading, import the package into your Unity project. In the preferences, you can specify whether the application should run via an HMD or in the simulator. Once this is set up, the next step is to prepare the application for your specific use case. The process is similar for all options and is demonstrated here with screenshots using the example of trackpad control.
 
 Here, the script that implements the logic for the trackpad must be assigned to the CCCController object. With its help, there are then several selection options that can be used to adapt the menu to your own use case. 
 
 <div align="center" width="100%"><img src="Documents/MenuOptionsSetup.png"/></div>
 
-As can be seen in the screenshot, the CCC object must be assigned to the script. You can then select whether the operation should be carried out with the left or right hand and which button should be used to show or hide the menu. In addition, a button can be defined with which a cube marked with a highlight can be selected and thus the associated action can be triggered. In the case of operation using a trackpad, a Select button can also be selected, which can then be used to highlight cubes. The Show checkbox indicates whether the menu is shown or hidden. If it is selected, the menu is displayed at the start of the application. 
+As shown in the screenshot, the CCC object must be assigned to the script. You can then choose whether the operation should be performed with the left or right hand and select the button to show or hide the menu. Additionally, you can define a button to select a highlighted cube, triggering its associated action. For trackpad operation, a Select button can be chosen to highlight cubes. The Show checkbox indicates whether the menu is displayed or hidden; if selected, the menu will be shown at the start of the application.
 
-The text shown on the cubes in the screenshot can also be customized individually for each cube when used in your own applications. To do this, the text element assigned to a cube must be edited, for which the layer1 assigned to the CCC object must be expanded. This contains all 4 cubes that belong to the menu, which in turn each have a canvas assigned to them on which the text can be displayed. The text is displayed using TextMeshPro and the text can simply be entered in the editor. The only disadvantage of this option is that all layers that are to be edited must always be expanded, which means that changing a text takes longer than if the texts were assigned using a script and could be done directly with the operating hand, for example. 
+The text displayed on the cubes can also be customized individually for each cube in your application. To do this, edit the text element assigned to a cube by expanding layer1 assigned to the CCC object. This layer contains all four cubes that belong to the menu, each with an assigned canvas for text display. The text is shown using TextMeshPro and can be easily entered in the editor. The drawback of this method is that all layers to be edited must be expanded, making text changes more time-consuming compared to assigning texts via a script and modifying them directly with the operating hand.
 
 <div align="center" width="100%"><img src="Documents/TextCubesSetup.png"/></div>
 
@@ -115,7 +114,7 @@ Depending on the structure of the application, the action script must also be as
 
 ## 4 Use cases and needed files 
 
-As described above, the menu application can be used in different variants, although not all scripts are required for all variants. For this reason, an overview of the most common variants and which scripts are required to operate them is provided below. 
+As mentioned earlier, the menu application can be utilized in various configurations, and not all scripts are necessary for every variant. Therefore, an overview of the most common variants and the scripts required for each is provided below.
 
 | Use cases               | Needed Scripts                                                                                       |
 |-------------------------|------------------------------------------------------------------------------------------------|
@@ -124,16 +123,13 @@ As described above, the menu application can be used in different variants, alth
 | Menu positioned in room | CCC, CCCubeEventManager, LayerEventManager, RadialMenuBasis, RadialMenu
 
 
-## 5 ToDos and possible improvements 
+## 5 Future enhancements and potential improvements
+Several improvements are worth considering for future updates to this project:
 
-For future changes to this project, there are several possible improvements to which particular attention should be paid. 
+One major enhancement would be to implement dynamic menu sizing, allowing menus to adjust their size automatically without manual changes to the prefab. This would involve updating the trackpad input logic to accommodate a variable number of segments. As a temporary solution, creating separate prefabs for different menu sizes and using a dropdown menu to select the number of cubes could be considered.
 
-For example, an implementation that makes it possible to generate menus with dynamic sizes without having to change the respective prefab by hand is pending. The logic for the input via trackpad must also be adapted for this, as the number of segments must be adapted to the number of cubes. However, this revision should be done quickly. In the worst case, a separate prefab must be created for a certain number of menu items and then a drop-down menu must be used to select how many cubes should be used to create a menu. 
+Another area for improvement is refining the inheritance structure to better support the addition of new features. Simplifying and clarifying the code will also make future updates and feature integrations more manageable.
 
-It would also make sense to further improve the inheritance structure and thus prepare for the introduction of new features. It may also be possible to further simplify the code and make it clearer. This will also make it easier to introduce new features in the future. 
+Improving the cube labeling system would also be beneficial. Currently, labels are specified for only one side of each cube. Modifying the system to apply labels to all four sides with a single specification would enhance usability, particularly in 3D environments where users can move around the menu. This change would help reduce errors and improve the overall user experience.
 
-When labeling the cubes, it would make sense to only have to specify them once and then display them on all 4 sides of a cube instead of just one as is currently the case. This could improve usability in 3D applications in which the menu is placed in the room. As the user can move freely around the menu here, it would only make sense if a label is also given on all sides. The difficulty here is probably to set the text only once per cube, otherwise the susceptibility to errors increases greatly and the usability becomes worse. 
-
-In addition to the texts, it would be useful to be able to assign a texture or an image to cubes that is displayed on all 4 sides. In this way, more complicated actions could be represented whose description in text form would be difficult to realize or would require too many words. Care must be taken here to ensure that images of different sizes are still displayed sharply and are not completely pixelated. 
-
-
+Additionally, integrating the ability to assign textures or images to the cubes—displayed on all sides—would allow for more complex visual representations of actions that might be difficult to convey with text alone. It’s important to ensure that these images are clear and not pixelated, regardless of their size.
